@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
-function App() {
+function App(props) {
+  const [usuario, setUsuario] = useState('');
+
+  function handlePesquisa() {
+    axios.get(`https://api.github.com/users/${usuario}/repos`).then(response => console.log(response.data));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-       
-        <h1>Bem vindo a minha página!</h1>
 
-       
-      </header>
-    </div>
+    <>
+      <input className="userInput" placeholder="Usuário" value={usuario} onChange={e => setUsuario(e.target.value)} />
+      <button type="button" onClick={handlePesquisa}>Pesquisar</button>
+    </>
   );
 }
 
