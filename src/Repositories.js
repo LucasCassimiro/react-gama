@@ -1,9 +1,9 @@
 import React from 'react';
 
 export default function Repositories() {
-    return(
+    return (
         <h1>Repositories</h1>
     )
-    
+
 }
 
